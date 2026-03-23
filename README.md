@@ -24,7 +24,7 @@ AI Agent 可呼叫的 6 個工具
 
 
 ## 必要條件
-需要 Chrome Canary 146+ 並開啟 chrome://flags/#enable-webmcp-testing
+需要 Chrome Canary 146+ 並設定開啟 chrome://flags/#enable-webmcp-testing
 
 ⚠️ 一般 Chrome／Edge／Firefox 無法使用 WebMCP 工具呼叫功能（但網頁 UI 仍可正常操作）
 
@@ -32,13 +32,14 @@ AI Agent 可呼叫的 6 個工具
 | 用途               | 工具                                        |
 | ---------------- | ----------------------------------------- |
 | 瀏覽器內測試 WebMCP 工具 | Model Context Tool Inspector（Chrome 擴充功能） |
-| 用 AI 驅動工具呼叫      | Cursor 或 Claude Code + webmcp-server 橋接器  |
+| 用 AI 驅動工具呼叫      | Claude Code + webmcp-server  |
 
 🚀 快速開始
 Step 1：開啟網頁
-將 webmcp-demo.html 下載到本機，使用 Chrome 開啟。
+1: 可以從此連結直接測試: https://isha70852.github.io/WebMCP-Demo/
+2: 或是將 webmcp-demo.html 下載到本機，使用 Chrome 開啟。
 
-需使用本機伺服器開啟（避免瀏覽器安全限制）：
+下載至本機需使用本機伺服器開啟（避免瀏覽器安全限制）：
 ### Python 3
 python -m http.server 8080
 
@@ -53,31 +54,21 @@ Live Server插件
 
 側邊欄會自動列出 6 個已註冊的工具與參數說明
 
-手動測試（不需要 AI）：
-
-選擇工具 → 填入 JSON 參數 → 點擊 Execute。例如：
-
-json
-工具：switch_tab
-參數：{ "tab": "reservation" }
-執行後網頁會切換到訂位分頁。
-
-用 Gemini AI 驅動（需要 API Key）：
+用 Gemini 操作（需要 API Key）：
 
 在擴充功能設定填入 Google AI Studio 的 API Key
 
 側邊欄輸入自然語言，Gemini 會自動選擇並呼叫對應工具
 
 方法二：Claude Code
-bash
-# 一行指令加入 MCP server
+
+## 一行指令加入 MCP server
 claude mcp add webmcp-server -- npx webmcp-server
 加入後在對話中即可直接操作網頁工具。
 
 🧪 完整測試 Prompt
 複製以下內容貼入任何支援 WebMCP 的 Agent，可驗證全部 6 個工具：
 
-text
 請依照下列步驟操作 Brew Lab Café 網頁：
 
 1. 切換到菜單分頁
@@ -97,7 +88,7 @@ text
 購物車最終清空，訂位欄位填入完成並顯示成功訊息
 
 
-頂部 WebMCP 狀態徽章
+## 頂部 WebMCP 狀態徽章
 狀態	說明
 🟢 WebMCP 已啟用	環境正確，6 個工具已全部註冊
 🟠 不支援	瀏覽器不支援，UI 仍可手動操作
@@ -112,7 +103,7 @@ Q：工具呼叫後網頁沒有反應
 Q：這個網頁可以部署到正式環境嗎？
 → WebMCP 目前仍是實驗性草案，不建議用於生產環境，適合學習與概念驗證使用。
 
-# 參考資料
+## 參考資料
 https://github.com/GoogleChromeLabs/webmcp-tools
 
 
